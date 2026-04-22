@@ -101,13 +101,20 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  /* Read GPIO PB12, toggle GPIO PC13 */
+	  /* Task 1: Read GPIO PB12, toggle GPIO PC13 */
 	  obButtonState = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 	  if (GPIO_PIN_RESET == obButtonState)
 	  {
 		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+		  HAL_Delay(100);
 	  }
 	  else { /* do nothing */ }
+
+	  /* Task 2: Toggle LED on GPIO PC13 with 1Hz frequency */
+	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	  HAL_Delay(500);
+	  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	  HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
